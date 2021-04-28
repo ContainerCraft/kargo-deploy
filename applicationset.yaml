@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: https://github.com/ContainerCraft/Kargo
+      repoURL: https://github.com/ContainerCraft/kargo-deploy
       revision: master
       files:
       - path: clusters/**/config.json
@@ -20,7 +20,7 @@ spec:
           prune: true
           selfHeal: true
       source:
-        repoURL: https://github.com/ContainerCraft/Kargo
+        repoURL: https://github.com/ContainerCraft/kargo-deploy
         targetRevision: master
         path: overlays/{{cluster.overlay}}
       destination:
