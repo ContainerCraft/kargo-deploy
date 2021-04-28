@@ -1,0 +1,28 @@
+ piVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: kargo
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/ContainerCraft/Kargo
+      revision: master
+      files:
+      - path: clusters/**/config.json
+  template:
+    metadata:
+      name: '{{cluster.name}}-kargo'
+    spec:
+      project: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      source:
+        repoURL: https://github.com/ContainerCraft/Kargo
+        targetRevision: master
+        path: overlays/{{cluster.overlay}}
+      destination:
+        server: '{{cluster.server}}'
+        namespace: kargo
