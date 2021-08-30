@@ -7,7 +7,7 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/ContainerCraft/kargo-deploy
-      revision: master
+      revision: main
       files:
       - path: clusters/**/config.json
   template:
